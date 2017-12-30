@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Vos informations</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="action-sheets-basic-page" ng-controller="AboutController">
+  <h2>Comment dois-je vous appeller ?</h2>
+
+
+
+  <form (ngSubmit)="updateData()" name="form" novalidate  >
+    
+    
+              <!-- nom -->
+        
+              
+                    <ion-item>
+                      <ion-label>Pseudo</ion-label>
+                      <ion-input type="text" name="name" [(ngModel)]="name"  ></ion-input>
+                    </ion-item>
+                    <br />
+
+                           
+                    <ion-item *ngIf="!isValid()">
+                      <p>Désolé, le champ Pseudo est obligatoire !</p>
+                    </ion-item>
+                  
+  
+  
+              <button ion-button  type="submit" [disabled]="!isValid()"  class="btn btn-lg btn-success form-button" block >Valider</button> 
+            
+    </form>
+    
+
+
+
+</ion-content>

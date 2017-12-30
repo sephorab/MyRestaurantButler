@@ -1,0 +1,59 @@
+<!--
+  Generated template for the ShowAllPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    
+      <ion-navbar>
+        <ion-title>Favoris</ion-title>
+  
+    
+      </ion-navbar>
+    
+    </ion-header>
+    
+    <ion-content padding>
+        <h2>Tous vos favoris</h2>
+    
+        <p>Glissez votre doigt vers la gauche en touchant un favori, je le modifierai ou le supprimerai. </p>
+        <p>Cliquez sur un favori, j'afficherai ses détails.</p>
+    
+        <ion-item *ngIf="!hasReviews()">
+            <p>Vous n'avez encore aucun favori.</p>
+        </ion-item>
+    
+        <ion-list>
+          <ion-item-sliding *ngFor="let restaurant of restaurants; let i=index" >
+            <ion-item nopadding (click) = "showOneData(restaurant.rowid)">
+
+
+              <ion-icon float-end *ngIf=isFavorite(restaurant.rowid) name="heart"></ion-icon>
+              <ion-icon float-end *ngIf=!isFavorite(restaurant.rowid) name="heart-outline"></ion-icon>
+              <p>
+                <span>Nom : {{restaurant.name}}</span><br>
+                Adresse : {{restaurant.location}}<br>
+                Note : {{getStringRatingFromInt(restaurant.star)}}<br>
+                Prix : {{getStringPriceFromInt(restaurant.price)}}<br>
+                Type : {{restaurant.type}}<br>
+              </p>
+              <h3>
+                  Avis : {{restaurant.review}}
+              </h3>
+    
+    
+            </ion-item>
+            <ion-item-options side="right">
+              <button ion-button color="primary" (click)="editData(restaurant.rowid)">
+                <ion-icon name="paper"></ion-icon>
+              </button>
+              <button ion-button color="danger" (click)="deleteData(restaurant.rowid)">
+                <ion-icon name="trash"></ion-icon>
+              </button>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+  
+
+      </ion-content>

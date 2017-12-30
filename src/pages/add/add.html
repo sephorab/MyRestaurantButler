@@ -1,0 +1,106 @@
+<ion-header>
+  
+<ion-navbar>
+  <ion-title>
+    Ajouter un restaurant
+  </ion-title>
+</ion-navbar>
+
+
+</ion-header>
+
+<ion-content class="round_box bg-picture"> 
+
+      <form *ngIf="formGroupAdd" [formGroup]="formGroupAdd" (ngSubmit)="addRestaurantForm(formGroupAdd.value)"  >
+
+
+          <!-- nom -->
+          <ion-item>
+            <ion-label>Nom du restaurant</ion-label>
+            <ion-input type="text" formControlName="name" ></ion-input>
+          </ion-item>
+          <ion-item *ngIf=" (!isValid('name') ||  formGroupAdd.controls.name.hasError('required') ) && formGroupAdd.controls.name.touched">
+            <p>Désolé, le champ Nom est obligatoire !</p>
+          </ion-item>
+
+          <!-- localisation -->
+          <ion-item>
+              <ion-label for="adresse">Adresse</ion-label>
+              <ion-input type="text" formControlName="location"></ion-input>
+          </ion-item>
+
+          <ion-item *ngIf="  (!isValid('localisation') ||  formGroupAdd.controls.location.hasError('required')) && formGroupAdd.controls.location.touched">
+              <p>Désolé, le champ Adresse est obligatoire !</p>
+            </ion-item>
+
+
+          <!-- note ++ -->
+          <ion-item>
+
+              <ion-label >Note</ion-label>
+
+                <ion-select formControlName="star">
+                    <ion-option name="star" id="star-5" class="star star-5" value="5">Excellent !</ion-option>
+                    <ion-option name="star" id="star-4" class="star star-4" value="4">Bon !</ion-option>
+                    <ion-option name="star" id="star-3" class="star star-3" value="3">Pas mal !</ion-option>
+                    <ion-option name="star" id="star-2" class="star star-2" value="2">Peut mieux faire !</ion-option>
+                    <ion-option name="star" id="star-1" class="star star-1" value="1">Nul !</ion-option>
+                </ion-select>
+
+          </ion-item>
+
+
+
+
+          <!-- type ++ -->
+          <ion-item>
+              <ion-label for="type">Type de cuisine</ion-label>
+              <ion-select formControlName="type">
+                  <ion-option name="type" value="africaine">Africaine</ion-option>
+                  <ion-option name="type" value="amérique-du-nord">Amérique du Nord</ion-option>
+                  <ion-option name="type" value="amérique-du-sud">Amérique du Sud</ion-option>
+                  <ion-option name="type" value="chinoise">Chinoise</ion-option>
+                  <ion-option name="type" value="espagnole">Espagnole</ion-option>
+                  <ion-option name="type" value="europe-du-nord">Europe du Nord</ion-option>
+                  <ion-option name="type" value="europe-de-l-est">Europe de l'Est</ion-option>
+                  <ion-option name="type" value="française">Française</ion-option>
+                  <ion-option name="type" value="fruits-de-mer">Fruits de mer</ion-option>
+                  <ion-option name="type" value="gastronomique">Gastronomique</ion-option>
+                  <ion-option name="type" value="indienne">Indienne</ion-option>
+                  <ion-option name="type" value="italienne">Italienne</ion-option>
+                  <ion-option name="type" value="japonnaise">Japonnaise</ion-option>
+                  <ion-option name="type" value="orientale">Orientale</ion-option>
+              </ion-select>
+          </ion-item>
+      
+      
+          
+          <!-- prix ++ -->
+
+          <ion-item>
+            
+            <ion-label >Prix</ion-label>
+            
+            <ion-select formControlName="price">
+                <ion-option name="price" id="price-3" class="price price-3" value="3">Cher</ion-option>
+                <ion-option name="price" id="price-2" class="price price-2" value="2">Moyen</ion-option>
+                <ion-option name="price" id="price-1" class="price price-1" value="1">Pas cher</ion-option>
+            </ion-select>
+            
+          </ion-item>
+
+          <!-- avis -->
+          <ion-item>
+            <ion-label for="review">Avis</ion-label>
+            <ion-textarea formControlName="review" name="review" ></ion-textarea>
+          </ion-item>
+        
+          <ion-item *ngIf=" (!isValid('review') ||  formGroupAdd.controls.review.hasError('required')) && formGroupAdd.controls.review.touched">
+            <p>Désolé, le champ Avis est obligatoire !</p>
+          </ion-item>
+
+          <button ion-button  type="submit" [disabled]="!formGroupAdd.valid || !isValid('name') || !isValid('location') || !isValid('review')"  class="btn btn-lg btn-success form-button" block >Ajouter la review</button> 
+      </form>
+
+
+</ion-content>
