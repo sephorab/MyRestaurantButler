@@ -68,7 +68,7 @@ export class AddPage {
 
             this.navCtrl.popToRoot();
 
-            this.toast.show('Data saved', '5000', 'center').subscribe(
+            this.toast.show('Votre review a été sauvegardé avec succès.', '5000', 'center').subscribe(
               toast => {
               }
             );

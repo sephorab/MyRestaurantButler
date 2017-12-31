@@ -124,7 +124,7 @@ export class EditPage {
           //this.navCtrl.popToRoot();
 
           //this.popView();
-          this.toast.show('Review modifiée avec succès', '5000', 'center').subscribe(
+          this.toast.show('Review modifiée avec succès.', '5000', 'center').subscribe(
             toast => {
             }
           );

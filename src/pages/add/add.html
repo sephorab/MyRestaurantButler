@@ -29,7 +29,7 @@
               <ion-input type="text" formControlName="location"></ion-input>
           </ion-item>
 
-          <ion-item *ngIf="  (!isValid('localisation') ||  formGroupAdd.controls.location.hasError('required')) && formGroupAdd.controls.location.touched">
+          <ion-item *ngIf="  (!isValid('location') ||  formGroupAdd.controls.location.hasError('required')) && formGroupAdd.controls.location.touched">
               <p>Désolé, le champ Adresse est obligatoire !</p>
             </ion-item>
 
